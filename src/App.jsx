@@ -22,10 +22,6 @@ export default function App() {
 
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
-  function isLeapYear(year) {
-    return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-  }
-
   function validate(values) {
     const errors = {
       day: '',
@@ -37,39 +33,37 @@ export default function App() {
     const month = Number(values.month);
     const year = Number(values.year);
     const currentYear = new Date().getFullYear();
-
-    if (!values.day) {
+    
+    const today = new Date();
+    if (!day) {
       errors.day = 'This field is required';
     } else if (!Number.isInteger(day) || day < 1 || day > 31) {
       errors.day = 'Must be a valid day';
     }
 
-    if (!values.month) {
+    if (!month) {
       errors.month = 'This field is required';
     } else if (!Number.isInteger(month) || month < 1 || month > 12) {
       errors.month = 'Must be a valid month';
     }
 
-    if (!values.year) {
+    if (!year) {
       errors.year = 'This field is required';
     } else if (!Number.isInteger(year) || year < 1 || year > currentYear) {
       errors.year = 'Must be a valid year';
     }
 
     if (!errors.day && !errors.month && !errors.year) {
-      const thirtyDayMonths = [4, 6, 9, 11];
+      const daysInMonth = new Date(year, month, 0).getDate();
+      const inputDate = new Date(year, month - 1, day);
 
-      if (month === 2) {
-        const februaryMax = isLeapYear(year) ? 29 : 28;
-
-        if (day > februaryMax) {
-          errors.day = 'Must be a valid day';
-        }
-      } else if (thirtyDayMonths.includes(month) && day > 30) {
+      if (day > daysInMonth) {
         errors.day = 'Must be a valid day';
+      } else if (inputDate > today) {
+        errors.day = 'Date cannot be in the future';
       }
     }
-
+ 
     return errors;
   }
 
@@ -179,7 +173,9 @@ export default function App() {
       </div>
         <div className='button-container'>
                <div className="divider"></div>
-               <button id="calculate" type="button" onClick={calculate}>
+               <button id="calculate" type="button" 
+                    aria-label="Calculate results"
+                    onClick={calculate}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="46" height="44" viewBox="0 0 46 44" fill="#854DFF"><g fill="none" stroke="#FFF" strokeWidth="2"><path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"/></g></svg>
                </button>
         </div>
