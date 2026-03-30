@@ -39,8 +39,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://github.com/CoderAlchemy24/frm-age-calculator.git](https://github.com/CoderAlchemy24/frm-age-calculator.git)
+- Live Site URL: [https://papaya-lamington-392874.netlify.app/](https://papaya-lamington-392874.netlify.app/)
 
 ## My process
 
