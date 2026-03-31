@@ -156,7 +156,7 @@ h1,h2,h3{
     gap:24px;
   }
   .all-input-container{
-    width: min(544px, 100%);
+    width:auto;
     height:auto;
   }
 
@@ -171,8 +171,7 @@ h1,h2,h3{
 
   .divider{
   
-    /* width: calc(100% - 96px);*/
-     width: min(544px, 100%);
+     width: calc(100% - 96px);
    /* height: 1px;
     background-color: #DCDCDC; */
     border: none;
@@ -211,8 +210,10 @@ h1,h2,h3{
   }
 
   .all-input-container{
-    width: min(289px, 100%);
+    width:96%;
     height: auto;
+   
+     
   }
 
   .input-container{
@@ -256,10 +257,11 @@ h1,h2,h3{
   }
 
   .divider{
-    width: min(289px, 100%);
     margin:0 auto;
-    position: relative;
-    left: 0;
+   width: 100%;
+   position: relative;
+   left: -2px;
+
   }
 
 button{
